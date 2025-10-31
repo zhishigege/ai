@@ -1,0 +1,258 @@
+================================================================================
+                    AI效率管家 - 项目文件结构
+================================================================================
+
+项目根目录: AIEfficiencyApp/
+
+📁 项目结构:
+├── 📄 README.md                          # 详细项目说明
+├── 📄 APP_INFO.md                        # 应用信息和使用指南
+├── 📄 BUILD_GUIDE.md                     # 构建指南
+├── 📄 QUICK_START.md                     # 快速开始指南
+├── 📄 gradle.properties                  # Gradle配置
+├── 📄 build.gradle.kts                   # 项目级构建配置
+├── 📄 settings.gradle.kts                # 项目设置
+│
+└── 📁 app/                               # 应用模块
+    ├── 📄 build.gradle.kts               # 应用级构建配置
+    ├── 📄 proguard-rules.pro             # 混淆规则
+    ├── 📄 AndroidManifest.xml            # 应用清单
+    │
+    └── 📁 src/main/
+        ├── 📁 java/com/aiefficiency/    # Java/Kotlin源代码
+        │   ├── 📄 MainActivity.kt         # 主Activity
+        │   │
+        │   ├── 📁 ui/                    # UI层 (Jetpack Compose)
+        │   │   ├── 📄 HomeScreen.kt      # 主屏幕
+        │   │   ├── 📄 AddTaskScreen.kt   # 添加任务屏幕
+        │   │   ├── 📄 TaskDetailScreen.kt # 任务详情屏幕
+        │   │   ├── 📄 SettingsScreen.kt  # 设置屏幕
+        │   │   ├── 📄 EfficiencyAnalysisScreen.kt # 效率分析屏幕
+        │   │   ├── 📁 theme/
+        │   │   │   ├── 📄 Theme.kt       # 应用主题
+        │   │   │   ├── 📄 Color.kt       # 颜色定义
+        │   │   │   └── 📄 Type.kt        # 排版定义
+        │   │   └── 📁 navigation/
+        │   │       └── 📄 Navigation.kt  # 导航配置
+        │   │
+        │   ├── 📁 viewmodel/             # ViewModel层
+        │   │   └── 📄 TaskViewModel.kt   # 任务ViewModel
+        │   │
+        │   ├── 📁 model/                 # 数据模型
+        │   │   ├── 📄 Task.kt            # 任务数据模型
+        │   │   └── 📄 ApiConfig.kt       # API配置模型
+        │   │
+        │   ├── 📁 database/              # Room数据库
+        │   │   ├── 📄 AppDatabase.kt     # 数据库定义
+        │   │   └── 📄 Daos.kt            # 数据访问对象
+        │   │
+        │   ├── 📁 api/                   # API接口
+        │   │   └── 📄 OpenAIApiService.kt # OpenAI API接口
+        │   │
+        │   ├── 📁 service/               # 业务服务
+        │   │   ├── 📄 AIService.kt       # AI任务拆解服务
+        │   │   └── 📄 NotificationService.kt # 通知服务
+        │   │
+        │   ├── 📁 repository/            # 数据仓库
+        │   │   ├── 📄 TaskRepository.kt  # 任务仓库
+        │   │   └── 📄 ApiConfigRepository.kt # API配置仓库
+        │   │
+        │   └── 📁 util/                  # 工具类
+        │       └── (工具函数)
+        │
+        └── 📁 res/                       # 资源文件
+            ├── 📁 layout/                # 布局文件 (如有)
+            ├── 📁 drawable/              # 图片资源
+            ├── 📁 drawable-v24/          # 高版本图片资源
+            └── 📁 values/                # 字符串等资源
+
+================================================================================
+                            文件说明
+================================================================================
+
+【根目录文件】
+- README.md: 项目完整说明，包括功能、技术栈、使用指南
+- APP_INFO.md: 应用详细信息，包括安装、配置、常见问题
+- BUILD_GUIDE.md: 从源代码构建APK的详细指南
+- QUICK_START.md: 5分钟快速开始指南
+- gradle.properties: Gradle全局配置
+- build.gradle.kts: 项目级Gradle配置
+- settings.gradle.kts: 项目设置和模块配置
+
+【应用代码】
+
+UI层 (ui/):
+- HomeScreen.kt: 主屏幕，显示任务列表和效率统计
+- AddTaskScreen.kt: 添加任务屏幕，支持AI拆解选项
+- TaskDetailScreen.kt: 任务详情屏幕，更新进度和状态
+- SettingsScreen.kt: 设置屏幕，配置OpenAI API
+- EfficiencyAnalysisScreen.kt: 效率分析屏幕，显示统计数据
+- Navigation.kt: 应用导航配置
+
+ViewModel层 (viewmodel/):
+- TaskViewModel.kt: 管理任务和API配置的状态
+
+数据模型 (model/):
+- Task.kt: 任务、子任务、时间日志、效率指标的数据模型
+- ApiConfig.kt: API配置和聊天消息的数据模型
+
+数据库 (database/):
+- AppDatabase.kt: Room数据库定义
+- Daos.kt: 任务、子任务、时间日志、API配置的数据访问对象
+
+API接口 (api/):
+- OpenAIApiService.kt: Retrofit接口定义，用于调用OpenAI API
+
+业务服务 (service/):
+- AIService.kt: AI任务拆解和效率分析服务
+- NotificationService.kt: 任务提醒通知服务
+
+数据仓库 (repository/):
+- TaskRepository.kt: 任务数据仓库，封装数据库操作
+- ApiConfigRepository.kt: API配置仓库
+
+【构建配置】
+- app/build.gradle.kts: 应用模块的Gradle配置，包括依赖和构建选项
+- app/proguard-rules.pro: ProGuard混淆规则
+
+【清单文件】
+- app/src/main/AndroidManifest.xml: Android应用清单，声明权限和组件
+
+================================================================================
+                        核心技术和依赖
+================================================================================
+
+【开发框架】
+- Kotlin 1.9.20: 编程语言
+- Jetpack Compose 1.6.0: 现代UI框架
+- Android Jetpack: 架构组件库
+
+【数据存储】
+- Room 2.6.1: 本地数据库
+- Gson 2.10.1: JSON序列化
+
+【网络请求】
+- Retrofit 2.9.0: HTTP客户端
+- OkHttp 4.11.0: HTTP库
+
+【异步编程】
+- Coroutines 1.7.3: 异步编程库
+
+【其他】
+- Material Design 3: UI设计规范
+- WorkManager 2.8.1: 后台任务调度
+
+================================================================================
+                        构建和运行
+================================================================================
+
+【前置要求】
+- JDK 17+
+- Android SDK 34
+- Gradle 8.5+
+
+【使用Android Studio构建】
+1. 打开项目
+2. 等待Gradle同步
+3. Build → Build Bundle(s) / APK(s) → Build APK(s)
+4. APK生成在: app/build/outputs/apk/debug/app-debug.apk
+
+【使用命令行构建】
+./gradlew assembleDebug
+
+【运行应用】
+- Android Studio: Run → Run 'app'
+- 命令行: ./gradlew installDebug
+
+================================================================================
+                        项目统计
+================================================================================
+
+代码文件数: 20+
+代码行数: 3000+
+依赖库数: 15+
+最低SDK: API 24 (Android 7.0)
+目标SDK: API 34 (Android 14)
+
+================================================================================
+                        功能模块说明
+================================================================================
+
+【任务管理模块】
+- 创建、编辑、删除任务
+- 任务优先级设置
+- 任务状态追踪
+- 进度可视化
+
+【AI功能模块】
+- 任务拆解: 使用OpenAI API将大任务拆解为每日小任务
+- 效率分析: 基于历史数据提供优化建议
+- 自定义API: 支持OpenAI兼容的任何API服务
+
+【数据存储模块】
+- 本地Room数据库
+- 任务、子任务、时间日志存储
+- API配置存储
+
+【通知提醒模块】
+- 任务到期提醒
+- 精确闹钟支持
+- 通知栏快捷操作
+
+【效率分析模块】
+- 任务完成率统计
+- 效率评分计算
+- 时间估计准确度分析
+
+================================================================================
+                        开发指南
+================================================================================
+
+【添加新功能】
+1. 在 model/ 中定义数据模型
+2. 在 database/ 中添加DAO方法
+3. 在 repository/ 中添加业务逻辑
+4. 在 viewmodel/ 中添加状态管理
+5. 在 ui/ 中添加UI界面
+
+【修改UI】
+- 所有UI代码在 ui/ 目录
+- 使用Jetpack Compose编写
+- 主题配置在 ui/theme/ 目录
+
+【调用API】
+- API接口定义在 api/ 目录
+- 使用Retrofit进行HTTP请求
+- 在 service/ 中封装业务逻辑
+
+【数据库操作】
+- DAO定义在 database/Daos.kt
+- 通过 repository/ 进行数据操作
+- 使用Flow进行响应式数据流
+
+================================================================================
+                        常见问题
+================================================================================
+
+Q: 如何添加新的API接口?
+A: 在 api/OpenAIApiService.kt 中添加新的Retrofit接口方法
+
+Q: 如何修改数据库字段?
+A: 修改 model/ 中的数据类，更新 database/Daos.kt 中的SQL语句
+
+Q: 如何添加新的屏幕?
+A: 在 ui/ 中创建新的Composable函数，在 navigation/Navigation.kt 中添加路由
+
+Q: 如何调整UI主题?
+A: 修改 ui/theme/ 中的颜色和排版定义
+
+================================================================================
+                        联系方式
+================================================================================
+
+如有问题或建议，欢迎反馈！
+
+开发者: Manus AI
+最后更新: 2025年10月31日
+
+================================================================================
